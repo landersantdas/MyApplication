@@ -120,11 +120,4 @@ public class Profile {
         this.date_registered = date_registered;
     }
 
-    // @Override
-    // public String toString() {
-    //     return "Quote{" +
-    //             "type='" + type + '\'' +
-    //             ", value=" + value +
-    //             '}';
-    // }
 }
