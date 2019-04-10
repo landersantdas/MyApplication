@@ -1,6 +1,7 @@
 package myapp;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.Date;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Profile {
@@ -16,7 +17,7 @@ public class Profile {
     private String phone;
     private String address;
     private String profile;
-    private String dateRegistered;
+    private Date date_registered;
 
     public Profile() {
     }
@@ -47,7 +48,7 @@ public class Profile {
     }
     
     public Name getName(){
-        returen name;
+        return name;
     }
     
     public String getEmail() {
@@ -66,8 +67,8 @@ public class Profile {
         return profile;
     }
     
-    public String getDateRegistered() {
-        return dateRegistered;
+    public Date getDate_registered() {
+        return date_registered;
     }
 
     //setters
@@ -115,8 +116,8 @@ public class Profile {
         this.profile = profile;
     }
     
-    public void setDateRegistered(String dateRegistered) {
-        this.dateRegistered = dateRegistered;
+    public void setDate_registered(Date date_registered) {
+        this.date_registered = date_registered;
     }
 
     // @Override

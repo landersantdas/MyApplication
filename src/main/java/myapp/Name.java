@@ -5,41 +5,43 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Name {
 
-    private String firstName;
-    private String midName;
-    private String lastName;
+    private String first;
+    private String middle;
+    private String last;
 
     public Name() {
     }
 
     //getters
-    public String getFirstName() {
-        return this.firstName;
+    public String getFirst() {
+        return this.first;
     }
 
-    public String getMidName() {
-        return this.midName;
+    public String getMiddle() {
+        return this.middle;
     }
 
-    public String getLastName() {
-        return this.lastName;
+    public String getLast() {
+        return this.last;
     }
 
     //setters
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirst(String first) {
+        this.first = first;
     }
     
-    public void setMidName(String midName) {
-        this.midName = midName;
+    public void setMiddle(String middle) {
+        this.middle = middle;
     }
     
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLast(String last) {
+        this.last = last;
     }
 
     @Override
     public String toString() {
-        return firstName + " " + midName + " " + lastName;
+        return first + 
+                " " + middle + 
+                ". " + last;
     }
 }

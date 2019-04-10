@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>HOME</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"/>
+</head>
+<body>
+    <div class="container">
+      <div th:if="${not #lists.isEmpty(profiles)}">
+          <h1>Home</h1>
+        <table class="highlight">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Active</th>
+                <th>Blocked</th>
+            </tr>
+            </thead>
+                <tbody>
+                    <tr th:each="profile: ${profiles}">
+                        <td th:text="${profile.name}"></td>
+                        <td th:text="${profile.age}"></td>
+                        <td th:text="${profile.active}"></td>
+                        <td th:text="${profile.blocked}"></td>
+                        <td><a th:href="${'/profile/' + profile.id}">Details</a></td>
+                    </tr>
+                </tbody>
+        </table>
+      </div>
+    </div>
+</body>
+</html>
