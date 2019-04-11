@@ -13,21 +13,19 @@ public class RestClientService {
 
     private final RestTemplate restTemplate;
 
-    //web service resource endpoints
+    //web service resource endpoint
     private final String GET_URL = "http://s3-ap-southeast-1.amazonaws.com/fundo/js/profiles.json";
  
     @Autowired
     public RestClientService(RestTemplate restTemplate){
         this.restTemplate = restTemplate;
     }
-    
-    //get all profiles then return a List of it
+        //get all profiles then return a List of it
     public List<Profile> findAllProfile(){
         return Arrays.stream(restTemplate.getForObject(GET_URL, Profile[].class)).collect(Collectors.toList());
     }
 
-    //get all profiles 
-    //then return the profile with the same id
+    //get all profiles then return the profile with the same id
     public Profile findProfileById(String id){
         List<Profile> profiles = Arrays.stream(restTemplate.getForObject(GET_URL, Profile[].class)).collect(Collectors.toList());
         Profile specificProfile = new Profile();
