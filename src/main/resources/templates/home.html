@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <meta charset="UTF-8"/>
     <title>HOME</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>    
 </head>
 <style>
-table tbody tr td a {
-  display: block;
-  width: 100%;
-  height: 100%;
-    color:black;
-}
+    table tbody tr td a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        color:black;
+    }
+    input[type=checkbox]{
+        -webkit-appearance:checkbox;
+    }
 </style>
 <body>
     <div class="container">
-      <div th:if="${not #lists.isEmpty(profiles)}">
-          <h1>Home</h1>
-
+        <div th:if="${not #lists.isEmpty(profiles)}">
+            <h1>Home</h1>
             <form role="form">
                 <div class="form-group">
-                  <input type="input" class="form-control input-lg" id="txt-search" placeholder="Type your search character">
+                    <input type="input" class="form-control input-lg" id="txt-search" placeholder="Search by name">
+                    <input type="checkbox" name="foo" value="TRUE">
+                    <input type="radio" checked name="bip" value="false">
                 </div>
             </form>  
-
         <table class="highlight">
             <thead>
             <tr>
@@ -46,52 +48,47 @@ table tbody tr td a {
                     </tr>
                 </tbody>
         </table>
-      </div>
+        </div>
     </div>
-    
-    <div ></div>
 </body>
 
 <script>
-        $('#txt-search').keyup(function(){
-            
-                var searchField = $(this).val();
-                if(searchField === '')  {
-                }
+    $('#txt-search').keyup(function(){
+        var searchField = $(this).val();
+        if(searchField === '')  {
+        }
                 
-                var regex = new RegExp(searchField, "i");
-                var output = '<tr>';
-                var count = 1;
-                
-                $.getJSON('search', function (data) {
-                    $.each(data, function(key, val){
-                    if ((val['name'].first.search(regex) != -1) || (val['name'].last.search(regex) != -1)) {
-                      output += '<td>';
-                      output += val['name'].first + " " + val['name'].middle + " " + val['name'].last;
-                      output += '</td>';
-                      output += '<td>';
-                      output += val.age;
-                      output += '</td>';
-                      output += '<td>';
-                      output += val.active;
-                      output += '</td>';
-                      output += '<td>';
-                      output += val.blocked;
-                      output += '</td>';
-                      output += '<td></td>'
-                  
-                    output += '<tr></tr>'
-                      
-                      count++;
-                    }
-                  });
-           
-                  output += '</tr>';
-                  $('#filter-records').html(output);
-                  
-                });
-            });
-        
-        </script>
+        var regex = new RegExp(searchField, "i");
+        var output = '<tr>';
+        var count = 1;
 
+        $.getJSON('search', function (data) {
+            $.each(data, function(key, val){
+            if ((val['name'].first.search(regex) != -1) || (val['name'].last.search(regex) != -1)) {
+                output += '<td><a href="profile/'+ val.id + '">';
+                output += val['name'].first + " " + val['name'].middle + " " + val['name'].last;
+                output += '</a></td>';
+                output += '<td><a href="profile/'+ val.id + '">';
+                output += val.age;
+                output += '</a></td>';
+                output += '<td><a href="profile/'+ val.id + '">';
+                output += val.active;
+                output += '</a></td>';
+                output += '<td><a href="profile/'+ val.id + '">';
+                output += val.blocked;
+                output += '</a></td>';
+                
+                output += '<tr></tr>'
+                
+                count++;
+            }
+        });
+    
+        output += '</tr>';
+        $('#filter-records').html(output);
+            
+        });
+    });
+        
+</script>
 </html>

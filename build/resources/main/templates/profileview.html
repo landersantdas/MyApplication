@@ -4,13 +4,85 @@
 <head>
     <meta charset="UTF-8"/>
     <title>PROFILE</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.css">
 </head>
 <body>
-<div class="container">
-    <h1 th:text="${profile.name}"></h1>
-    <p th:text="${profile.profile}"></p>
+         
+<!-- Page Container -->
+<div class="w3-content w3-margin-top" style="max-width:1400px;">
 
-</div>
+        <!-- The Grid -->
+        <div class="w3-row-padding">
+        
+          <!-- Left Column -->
+          <div class="w3-third">
+          
+            <div class="w3-white w3-text-grey w3-card-4">
+              <div class="w3-display-container">
+                <img th:src="${profile.picture}" style="width:100%" />
+
+                <div class="w3-display-bottomleft w3-container w3-text-black">
+                    <h2 th:text="${profile.name}"></h2>
+                </div>
+              </div>
+              <div class="w3-container">
+                  
+                <p><i class="fas fa-id-card-alt fa-fw w3-margin-right"></i>ID: </p>
+                <p th:text="${profile.id}"></p>
+                <p><i class="fas fa-adjust fa-fw w3-margin-right"></i>Active: </p>
+                <p th:text="${profile.active}"></p>
+                <p><i class="fas fa-bell fa-fw w3-margin-right"></i>Blocked: </p>
+                <p th:text="${profile.blocked}"></p>
+                <p><i class="far fa-calendar-alt fa-fw w3-margin-right"></i>Date Registered: </p>
+                <p th:text="${profile.date_registered}"></p>
+                
+              </div>
+            </div><br>
+          <!-- End Left Column -->
+          </div>
+      
+          <!-- Right Column -->
+          <div class="w3-twothird">
+          
+            <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
+              <h2  class="w3-text-grey w3-padding-16"><i class="fa fa-user fa-fw w3-margin-right w3-xxlarge "></i>About</h2>
+              <div class="w3-container">
+                  
+                <div class="w3-container">
+                    
+                <p><i class="fas fa-user-circle fa-fw w3-margin-right"></i>Profile: </p>
+                <p th:text="${profile.profile}"></p>
+
+                </div>
+                <div class="w3-container">
+                       <p><i class="fa fa-envelope fa-fw w3-margin-right"></i>Email: </p>
+                        <p th:text="${profile.email}"></p>
+                        <p><i class="fa fa-phone fa-fw w3-margin-right"></i>Phone:</p>
+                        <p th:text="${profile.phone}"></p>
+                        <p><i class="fa fa-address-book fa-fw w3-margin-right"></i>Address: </p>
+                        <p th:text="${profile.address}"></p>
+                        <p><i class="fa fa-male fa-fw w3-margin-right"></i>Age: </p>
+                        <p th:text="${profile.age}"></p>
+                        <p><i class="far fa-credit-card fa-fw w3-margin-right"></i>Balance: </p>
+                        <p th:text="${profile.balance}"></p>
+
+                        <hr>
+                        <button onclick="location.href = '/home';" style="width:100%">RETURN HOME</button>
+                        <hr>
+                        <hr>
+                      </div>
+
+              </div>
+            </div>
+      
+          <!-- End Right Column -->
+          </div>
+        <!-- End Grid -->
+        </div>
+        
+        <!-- End Page Container -->
+      </div>
 </body>
-</html> 
+</html>

@@ -27,8 +27,7 @@ public class MyController {
         return "home";
     }
 
-    //get specific profile by id
-    //then returns profileveiw.html
+    //get specific profile by id then returns profileveiw.html
     @RequestMapping("/profile/{id}")
     public String getById(@PathVariable String id, Model model){
         model.addAttribute("profile", service.findProfileById(id));
