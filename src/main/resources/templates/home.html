@@ -25,8 +25,10 @@
             <form role="form">
                 <div class="form-group">
                     <input type="input" class="form-control input-lg" id="txt-search" placeholder="Search by name">
-                    <input type="checkbox" name="foo" value="TRUE">
-                    <input type="radio" checked name="bip" value="false">
+                    
+                    
+                  
+                    <br>
                 </div>
             </form>  
         <table class="highlight">
@@ -42,8 +44,10 @@
                     <tr th:each="profile: ${profiles}">
                         <td><a th:href="${'/profile/' + profile.id}" th:text="${profile.name}"></a></td>
                         <td><a th:href="${'/profile/' + profile.id}" th:text="${profile.age}"></a></td>
-                        <td><a th:href="${'/profile/' + profile.id}" th:text="${profile.active}"></a></td>
-                        <td><a th:href="${'/profile/' + profile.id}" th:text="${profile.blocked}"></a></td>
+                        <td><a th:if="${profile.active}" th:href="${'/profile/' + profile.id}">&#9745</a>
+                        <a th:unless="${profile.active}" th:href="${'/profile/' + profile.id}">&#9744</a></td>
+                        <td><a th:if="${profile.blocked}" th:href="${'/profile/' + profile.id}">&#9745</a>
+                        <a th:unless="${profile.blocked}" th:href="${'/profile/' + profile.id}">&#9744</a></td>
                     </a>
                     </tr>
                 </tbody>
@@ -72,10 +76,20 @@
                 output += val.age;
                 output += '</a></td>';
                 output += '<td><a href="profile/'+ val.id + '">';
-                output += val.active;
+                if (val.active){
+                    output += '&#9745';
+                }
+                else{
+                    output += '&#9744';
+                }
                 output += '</a></td>';
                 output += '<td><a href="profile/'+ val.id + '">';
-                output += val.blocked;
+                if (val.blocked){
+                    output += '&#9745';
+                }
+                else{
+                    output += '&#9744';
+                }
                 output += '</a></td>';
                 
                 output += '<tr></tr>'
