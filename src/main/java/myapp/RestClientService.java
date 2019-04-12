@@ -20,7 +20,8 @@ public class RestClientService {
     public RestClientService(RestTemplate restTemplate){
         this.restTemplate = restTemplate;
     }
-        //get all profiles then return a List of it
+    
+    //get all profiles then return a List of it
     public List<Profile> findAllProfile(){
         return Arrays.stream(restTemplate.getForObject(GET_URL, Profile[].class)).collect(Collectors.toList());
     }
